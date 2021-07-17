@@ -50,7 +50,21 @@ const structureProduct = `
     <div class="product_price">${leId.price}</div>
     <div class="product_description">${leId.description}</div>
     </div>
-    `;
+
+    <div id="lenses">   
+                <form>
+                    <label for="option_produit"></label>
+                    <select name="option_produit" id="option_produit">
+                        <option value="0"></option>
+                        <option value="1"></option>
+                        <option value="2"></option>
+                        <option selected="Lentilles"></option>
+                    </select>
+                </form>
+                <button id="btn_ajouter" type="submit" name="btn_ajouter">Ajouter au panier</button>
+            </div>         
+
+     `;
 
 //affichage html dans la page produit
 positionElement.innerHTML = structureProduct;
