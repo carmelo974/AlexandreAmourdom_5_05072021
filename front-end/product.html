@@ -26,22 +26,50 @@
     </header>
     <main>
          <!--container presentation-->
-         <div class="orinocam-presentation">
+        <div class="orinocam-presentation">
              <h2 class="title-presentation">ORINOCO appareil photo vintage </h2>
         </div>
         <!--container-page-produit-->
-        <div class="container-page-produit">
-            <!-- <template> -->
-            
-            <!-- </template> -->
-        </div>
+        <div id="container_page_produit">
+                <!-- <a id= link href="#"> -->
+                    <div id="product_card" class="product_card">
+                        <div class="product_img">
+                            <img id="product_img" src="" alt="">
+                        </div>
+                        <div class="product_info">
+                            <h2 id= product_name class="product_name"></h2>
+                            <p id=product_decription class="product_description"></p>
+                            <div id=product_price class="product_price"></div>
+                            <div id="product_quantity">
+                                <label for="cameraNumber">Quantité</label>
+                                <input id="cameraNumber" type="number" name="cameraNumber" value="1" min="1">
+                            </div>
+                            <div class="product_info_lentilles">
+                                <div class="lenses">
+                                    <form>
+                                        <label for="lenses_select">Lentilles</label>
+                                         <select name="lenses" id="lenses_select" type="number" value="1">
+                                         <option selected="Lentilles"></option> 
+                                        </select>
+                                    </form>
+                                </div>        
+                            </div>
+                        </div>
+                        <!-- <template id="templateArticle">   -->
+                       
+                        <button id="btn_ajouter">Ajouter au panier</button>
+                        <a href="cart.html"><button id="btn_panier" type="submit" name="btn_panier">Votre panier</button></a>
+                        <!-- </template>           -->
+                    </div>
+                <!-- </a>     -->
+        </div>    
     </main>
     <footer>
         <div class="footer-nav">
-            <div class="tile-footer"><h3>ORINOCO</h3></div>
+            <div class="tile-footer"><h3>ORINOCO</h3></div> 
             <a href="contact.html">Contact</a>
         </div>
     </footer>
     <script src="product.js"></script>
-</body>
+</body> 
 </html>

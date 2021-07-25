@@ -1,70 +1,97 @@
-// recupération de la chaine de requête dans l'url
-const queryString_url_id = window.location.search;
-// console.log(queryString_url_id);
-
-// Méthode 1 - extraire l'id
-// const leId = queryString_url_id.slice(4);
-// console.log(leId);
-
-//Méthode 2 - extraire l'id
-const urlSearchParams = new URLSearchParams(queryString_url_id);
-// console.log(urlSearchParams);
-const leId = urlSearchParams.get("id");
-// console.log(leId);
-
-// sélection de la classe pour affichage html
-const positionElement = document.querySelector(".container-page-produit");
-// const productImg = document.querySelector(".img");
-// const productInfoTitle = document.querySelector(".product_info_title");
-
-function main() {
-  const articles = getArticles();
+(async function () {
+  const articleId = getArticleId();
+  // console.log(articleId);
+  const article = await getArticle(articleId);
+  // console.log(article);
+  displayArticle(article);
+})();
+// extraire l'id
+function getArticleId() {
+  return new URL(location.href).searchParams.get("id");
 }
-
-function getArticles() {
-  fetch(`http://localhost:3000/api/cameras/${id}`)
+function getArticle(articleId) {
+  return fetch(`http://localhost:3000/api/cameras/${articleId}`)
     .then(function (res) {
       if (res.ok) {
         return res.json();
       }
     })
-
+    .then(function (articles) {
+      return articles;
+    })
     .catch(function (error) {
       alert(error);
-    })
-
-    .then(function (dataAPI) {
-      const camera = dataAPI;
-      // productImg.src = camera.imageUrl;
-      //   productInfoTitle.textContent = camera.name;
     });
 }
 
-//structure html pour l'affichage
-const structureProduct = `
-    <div class="product_img">
-    <img src="${leId.imageUrl}" alt="" class="img">
-    </div>
-    <div class="product_info">
-    <div class="product_info_title">${leId.name}</div>
-    <div class="product_price">${leId.price}</div>
-    <div class="product_description">${leId.description}</div>
-    </div>
+function displayArticle(article) {
+  document.getElementById("product_img").src = article.imageUrl;
+  document.getElementById("product_name").textContent = article.name;
+  document.getElementById("product_decription").textContent =
+    article.description;
+  document.getElementById("product_price").textContent =
+    article.price / 100 + "€";
+  //   const templateElt = document.getElementById("templateArticle");
+  //   const cloneElt = document.importNode(templateElt.content, true);
+  //   cloneElt.getElementById("lenses_select").textContent = article.lenses;
+  document.getElementById("lenses_select").textContent = article.lenses;
+  // document.getElementById("product_card").appendChild(cloneElt);
+}
+// ----------------------gestion du panier----------------------------
+// sélection choix lentilles
+// const lenses = document.querySelector("#lenses_select");
+// console.log(lenses);
+// article.lenses.forEach((item, i) =>{
+//   lenses += "<option>" + item +"</option>";
+// });
+// select += "</select>;"
 
-    <div id="lenses">   
-                <form>
-                    <label for="option_produit"></label>
-                    <select name="option_produit" id="option_produit">
-                        <option value="0"></option>
-                        <option value="1"></option>
-                        <option value="2"></option>
-                        <option selected="Lentilles"></option>
-                    </select>
-                </form>
-                <button id="btn_ajouter" type="submit" name="btn_ajouter">Ajouter au panier</button>
-            </div>         
+//  sélection du bouton ajouter au panier
+// const productInfo = document.querySelector("#product_card");
+// console.log(productInfo);
+const btn_ajouter = document.querySelector("#btn_ajouter");
 
-     `;
+// recupération des valeurs du panier
+btn_ajouter.addEventListener("click", (event) => {
+  event.preventDefault();
+  let productAdded = {
+    name: product_name.innerHTML,
+    price: product_price.innerHTML,
+    quantity: parseFloat(document.querySelector("#cameraNumber").value),
+  };
+  console.log(productAdded);
 
-//affichage html dans la page produit
-positionElement.innerHTML = structureProduct;
+  // ------------------------------------------------local storage----------------------------------
+  // stocker les valeurs du formulaire ajouter au panier
+
+  // déclaration de la variable "productInCard" dans laquelle on mettra les key et valeurs qui seront dans le local storage
+  // JSON.parse convertit les données en format JSON en javascript
+  let productInCard = JSON.parse(localStorage.getItem("product"));
+  // popup de confirmation
+  const popupConfirmation = () => {
+    if (
+      window.confirm(`${product_name.innerHTML} a bien été ajouté
+Consulter votre panier OK ou revenir à l'accueil ANNULER`)
+    ) {
+      window.location.href = "cart.html";
+    } else {
+      window.location.href = "index.html";
+    }
+  };
+  // Fonc
+  // si le localStorage contient des valeurs
+  if (productInCard) {
+    productInCard.push(productAdded);
+    localStorage.setItem("product", JSON.stringify(productInCard));
+    popupConfirmation();
+  }
+  // si le localStorage ne contient pas  de valeurs dans localStorage
+  else {
+    productInCard = [];
+    productInCard.push(productAdded);
+    localStorage.setItem("product", JSON.stringify(productInCard));
+    popupConfirmation();
+
+    console.log(productInCard);
+  }
+});
