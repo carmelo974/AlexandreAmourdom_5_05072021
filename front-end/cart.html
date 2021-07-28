@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <!-- <script src="https://kit.fontawesome.com/cb98e9792d.js" crossorigin="anonymous"></script> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Merienda&display=swap" rel="stylesheet"> 
+    <title>Orinoco Panier</title>
+</head>
+<body>
+    <header>
+        <div class="container-grey">
+            <div class="header-container">
+                <div class="header-nav">
+                    <a href="index.html"><h1 class="nav_logo">ORINOCO</h1></a>
+                    <a href="product.html"><div class="nav_product"></div>
+                    <i class="fa fa-2x fa-shopping-cart"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main id="main">
+         <!--container presentation-->
+         <div class="orinocam-presentation">
+            <h2 class="title-presentation">ORINOCO appareil photo vintage </h2>
+            <p class="text-presentation">Voici votre commande</p>
+        </div>
+        <!--container_product_panier-->
+        <div id="container_product_panier">
+           
+           
+        </div>
+      
+        <!--container formulaire-->
+        <div class="formulaire_container" >
+            <div class="card_form">
+                <h2>Passer commande</h2>
+                <form action="">
+                    <div class="name_and_lastname">
+                        <div class="cart-card-form" id="bloc_name">
+                            <label for="firstname">Prénom</label>
+                            <input type="text"  id="firstname" name="user_name" required>
+                        </div>
+                        <div class="cart-card-form" id="bloc_lastname">
+                            <label for="lastname">Nom</label>
+                            <input type="text" id="lastname" name="user_lastname" required>
+                        </div>
+                    </div>
+                    <div class="cart-card-form" id="bloc_adress">
+                        <label for="adress">Adresse</label>
+                        <input type="text"  id="adress" name="user_adress" required>
+                    </div>
+                    <div class="city-and-codepostal">
+                        <div class="cart-card-form" id="bloc_city">
+                            <label for="city">Ville</label>
+                            <input type="text"  id="city" name="user_city" required>
+                        </div>
+                        <div class="cart-card-form" id="postal_container">
+                            <label for="postal">Code postal</label>
+                            <input type="text"  id="postal" name="user_postal" required>
+                            <span></span>
+                        </div>
+                    </div>
+                   <div class="cart-card-form" id="mail_container">
+                        <label for="mail">Adresse email</label>
+                        <input type="text"  id="mail" name="user_mail" required>
+                        <span>email incorrect</span>
+                   </div>
+                   <div class="erreur"></div>
+                   <div class="cart-card-form">
+                       <button id="btn_commander" type="submit">Commander</button>
+                   </div>
+                </form>
+                <div class="cart_confirmation">
+                    <p class="text_confirmation"></p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-nav">
+            <div class="tile-footer"><h3>ORINOCO</h3></div>
+            <a href="contact.html">Contact</a>
+        </div>
+    </footer>
+    <script src="cart.js"></script>
+</body>
+</html>

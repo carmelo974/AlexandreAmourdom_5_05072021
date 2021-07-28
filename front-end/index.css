@@ -21,7 +21,7 @@ a {
     align-items: center;
     padding: 20px;
 }
-/*container presentation*/
+/*container presentation index,product,panier*/
 .orinocam-presentation {
     display: flex;
     flex-direction: column;
@@ -64,6 +64,36 @@ a {
     object-fit: cover;
     border-radius: 20px;
 }
+/* css page card */
+#container_product_panier{
+    display: flex;
+    justify-content: center;
+
+}
+.your_camera{
+    background-color:rgba(158, 58, 130, 0.219);
+    box-shadow: 0px 0px 6px 5px rgb(207, 207, 207);
+    width: 80vw;
+}
+span {
+    margin-bottom: 20px;
+    display: block;
+    font-size: 0.8rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+    color: red;
+  }
+  .error span {
+    visibility: visible;
+    opacity: 1;
+    color: red;
+  }
+  .error input {
+    color: red;
+    border: 1px solid rgba(255, 0, 0, 0.527);
+  }
+
 /*footer*/
 .footer-nav {
     background-color: gray;
