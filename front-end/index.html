@@ -13,6 +13,7 @@
     <!--header with nav bar-->
     <header>
         <div class="container-grey">
+
             <div class="header-container">
                 <div class="header-nav">
                     <a href="index.html"><h1 class="nav_logo">ORINOCO</h1></a>
@@ -32,31 +33,31 @@
         <!--container products-->
         <div id="container_products">
             <template id= templateArticle>
-            
-            <div class="product_card">
-                <a id= link href="product.html">
-                <div class="product_img">
-                    <img id="product_img" src="" alt="">
+                <div class="product_card">
+                    <a id= link href="product.html">
+                    <div class="product_img">
+                        <img id="product_img" src="" alt="">
+                    </div>
+                    <div class="product_info">
+                        <h2 id= product_name class="product_name"></h2>
+                        <p id=product_decription class="product_description"></p>
+                        <div id=product_price class="product_price"></div>
+                    </div>
+                    </a> 
+                    <div class="product_info_lentilles">
+                        <div class="lenses">
+                            <form>
+                                <label for="lenses_select">Lentilles</label>
+                                <select name="lenses" id="lenses_select" type="number" value="1">
+                                    <option value="0"></option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                <option selected="Lentilles"></option> 
+                                </select>
+                            </form>
+                        </div>        
+                    </div>
                 </div>
-                <div class="product_info">
-                    <h2 id= product_name class="product_name"></h2>
-                    <p id=product_decription class="product_description"></p>
-                    <div id=product_price class="pruduct_price"></div>
-                </div>
-                </a>
-                <div class="product_info_lentilles">
-                    <div class="lenses">
-                        <form>
-                            <label for="lenses_select">Lentilles</label>
-                             <select name="lenses" id="lenses_select" type="number" value="1">
-                             <option selected="Lentilles"></option> 
-                            </select>
-                        </form>
-                    </div>        
-                </div> 
-            </div>
-            
-               
             </template>   
         </div>
     </main>

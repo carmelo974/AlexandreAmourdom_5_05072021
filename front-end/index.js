@@ -23,7 +23,7 @@ function getArticles() {
       alert(error);
     });
 }
-// afficher les articles sur la page avec fetch
+// afficher les articles sur la page 
 function displayArticle(article) {
   const templateElt = document.getElementById("templateArticle");
   const cloneElt = document.importNode(templateElt.content, true);
@@ -35,7 +35,7 @@ function displayArticle(article) {
     article.description;
   cloneElt.getElementById("product_price").textContent =
     article.price / 100 + "€";
-  cloneElt.getElementById("lenses_select").value = article.lenses
+  cloneElt.getElementById("lenses_select").value = article.lenses;
 
   document.getElementById("container_products").appendChild(cloneElt);
 }

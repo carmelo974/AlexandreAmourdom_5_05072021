@@ -1,8 +1,8 @@
 (async function () {
-  const articleId = getArticleId();
-  // console.log(articleId);
+  let articleId = getArticleId();
+  console.log(articleId);
   const article = await getArticle(articleId);
-  // console.log(article);
+  console.log(article);
   displayArticle(article);
 })();
 // extraire l'id
@@ -31,17 +31,17 @@ function displayArticle(article) {
     article.description;
   document.getElementById("product_price").textContent =
     article.price / 100 + "€";
-  //   const templateElt = document.getElementById("templateArticle");
-  //   const cloneElt = document.importNode(templateElt.content, true);
-  //   cloneElt.getElementById("lenses_select").textContent = article.lenses;
-  document.getElementById("lenses_select").textContent = article.lenses;
+  // const templateElt = document.getElementById("templateArticle");
+  // const cloneElt = document.importNode(templateElt.content, true);
+  // cloneElt.getElementById("lenses_select").textContent = article.lenses;
+  // document.getElementById("lenses_select").textContent = article.lenses;
   // document.getElementById("product_card").appendChild(cloneElt);
 }
 // ----------------------gestion du panier----------------------------
 // sélection choix lentilles
-// const lenses = document.querySelector("#lenses_select");
-// console.log(lenses);
-// article.lenses.forEach((item, i) =>{
+const lenses = document.querySelector("#lenses_select");
+console.log(lenses);
+// lenses.forEach((item, i) =>{
 //   lenses += "<option>" + item +"</option>";
 // });
 // select += "</select>;"
@@ -55,6 +55,7 @@ const btn_ajouter = document.querySelector("#btn_ajouter");
 btn_ajouter.addEventListener("click", (event) => {
   event.preventDefault();
   let productAdded = {
+    // id: articleId._id,
     name: product_name.innerHTML,
     price: product_price.innerHTML,
     quantity: parseFloat(document.querySelector("#cameraNumber").value),
