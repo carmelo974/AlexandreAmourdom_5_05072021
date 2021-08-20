@@ -31,20 +31,37 @@ function displayArticle(article) {
     article.description;
   document.getElementById("product_price").textContent =
     article.price / 100 + "€";
-  // const templateElt = document.getElementById("templateArticle");
-  // const cloneElt = document.importNode(templateElt.content, true);
-  // cloneElt.getElementById("lenses_select").textContent = article.lenses;
-  // document.getElementById("lenses_select").textContent = article.lenses;
-  // document.getElementById("product_card").appendChild(cloneElt);
+
+  function displayLense() {
+    let optionLense = article.lenses;
+    let arrayLense = "";
+    for (let c = 0; c < article.lenses.length; c++) {
+      arrayLense += `<option>${optionLense[c]}</option>
+        `;
+    }
+    const optionLentille = document.querySelector("#lenses_select");
+    optionLentille.innerHTML = arrayLense;
+    console.log(optionLentille);
+  }
+  displayLense();
 }
+let quantityCamera = document.querySelector("#cameraNumber");
+//   console.log(quantityCamera);
 // ----------------------gestion du panier----------------------------
-// sélection choix lentilles
-const lenses = document.querySelector("#lenses_select");
-console.log(lenses);
-// lenses.forEach((item, i) =>{
-//   lenses += "<option>" + item +"</option>";
-// });
-// select += "</select>;"
+
+
+// function removeDuplicates(productInCard) {
+//   for (x = 0; x < productInCard.length; x++) {
+//     for (let y = x + 1; y < productInCard.length; y++){
+//       if(productInCard[x]==productInCard[y]){
+//         productInCard.splice(y,1)
+//       }
+//     }
+//   }
+//   return productInCard;
+// }
+
+
 
 //  sélection du bouton ajouter au panier
 // const productInfo = document.querySelector("#product_card");
@@ -54,12 +71,17 @@ const btn_ajouter = document.querySelector("#btn_ajouter");
 // recupération des valeurs du panier
 btn_ajouter.addEventListener("click", (event) => {
   event.preventDefault();
+  
   let productAdded = {
-    // id: articleId._id,
+    id: getArticleId(),
     name: product_name.innerHTML,
-    price: product_price.innerHTML,
-    quantity: parseFloat(document.querySelector("#cameraNumber").value),
+    price:
+      parseFloat(product_price.innerHTML) * parseFloat(quantityCamera.value),
+    lenses: lenses_select.innerText,
+    quantity: parseFloat(quantityCamera.value),
+    
   };
+  
   console.log(productAdded);
 
   // ------------------------------------------------local storage----------------------------------
@@ -86,7 +108,7 @@ Consulter votre panier OK ou revenir à l'accueil ANNULER`)
     localStorage.setItem("product", JSON.stringify(productInCard));
     popupConfirmation();
   }
-  // si le localStorage ne contient pas  de valeurs dans localStorage
+  // si le localStorage ne contient pas  de valeurs
   else {
     productInCard = [];
     productInCard.push(productAdded);

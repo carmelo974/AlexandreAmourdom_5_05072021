@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="index.css">
     <script src="https://kit.fontawesome.com/cb98e9792d.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,61 +13,92 @@
 <body>
     <!--header with nav bar-->
     <header>
-        <div class="container-grey">
-
-            <div class="header-container">
-                <div class="header-nav">
-                    <a href="index.html"><h1 class="nav_logo">ORINOCO</h1></a>
-                    <a href="cart.html"><div class="nav_product"></div>
-                    <i class="fa fa-2x fa-shopping-cart"></i>
-                    </a>
-                </div>
+        <div class="bg-dark">
+            <div class="container">
+                <div class="row">
+                     <nav class="col navbar navbar-expand-lg navbar-dark"> 
+                        <a class="navbar-brand" href="index.html"><h1>ORINOCO</h1>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div id="navbarContent" class="collapse navbar-collapse">
+                            <ul class="navbar-nav">
+                                <li class="nav-item active">
+                                    <a href="index.html" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
+                                        <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"/>
+                                        <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+                                      </svg></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="cart.html" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                      </svg></a>
+                                </li>
+                             </ul>
+                        </div>
+                    </nav>
+                 </div>
             </div>
         </div>
     </header>
+
     <main id="main">
         <!--container presentation-->
-        <div class="orinocam-presentation">
-            <h2 class="title-presentation">ORINOCO appareil photo vintage </h2>
-            <p class="text-presentation">Découvrez notre gamme d'appareils photos vintage</p>
-        </div>
-        <!--container products-->
-        <div id="container_products">
-            <template id= templateArticle>
-                <div class="product_card">
-                    <a id= link href="product.html">
-                    <div class="product_img">
-                        <img id="product_img" src="" alt="">
-                    </div>
-                    <div class="product_info">
-                        <h2 id= product_name class="product_name"></h2>
-                        <p id=product_decription class="product_description"></p>
-                        <div id=product_price class="product_price"></div>
-                    </div>
-                    </a> 
-                    <div class="product_info_lentilles">
-                        <div class="lenses">
-                            <form>
-                                <label for="lenses_select">Lentilles</label>
-                                <select name="lenses" id="lenses_select" type="number" value="1">
-                                    <option value="0"></option>
-                                    <option value="1"></option>
-                                    <option value="2"></option>
-                                <option selected="Lentilles"></option> 
-                                </select>
-                            </form>
-                        </div>        
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="orinocam-presentation">
+                        <h2 class="title-presentation">ORINOCO appareil photo vintage </h2>
+                        <p class="text-presentation">Découvrez notre gamme d'appareils photos vintage</p>
                     </div>
                 </div>
-            </template>   
+            </div>
         </div>
+        
+        <!--container products-->
+        <div class="container mb-4">
+            <div class="row">
+                <div class="col">
+                    <div id="container_products">
+                        <template id= templateArticle>
+                            <div class="col-12 col-lg-4 ">
+                                <div class="card shadow product_card">
+                                    <a id= link href="product.html" class="stretched-link"></a> 
+                                    <div class="product_img">
+                                        <img id="product_img" class="card-img-top" src="" alt="">
+                                    </div>
+                                    <div class="card-body ">
+                                        <h2 id= product_name class=" card-title product_name"></h2>
+                                        <p id=product_decription class=" card-text product_description"></p>
+                                        <div id=product_price class="card-text text-center product_price bg-secondary"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>   
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     </main>
+    
     <footer>
-        <div class="footer-nav">
-            <div class="tile-footer"><h3>ORINOCO</h3></div>
-            <a href="contact.html">Contact</a>
+        <div class="bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item"><a href="#">ORINOCO</a></li>
+                            <li class="list-inline-item"><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
+
     <script src="index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 * {
     font-family: 'Merienda', cursive;
-    margin: 0;
-    padding: 0;
+    /* margin: 0;
+    padding: 0; */
 }
 h1 {
     color: black;
@@ -11,16 +11,10 @@ a {
     color: white;
 }
 /*header*/
-.container-grey {
-    box-shadow: 0px 5px 6px 0px rgb(207, 207, 207);
+#main{
+    background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
 }
-.header-nav {
-    background-color: gray;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-}
+
 /*container presentation index,product,panier*/
 .orinocam-presentation {
     display: flex;
@@ -31,60 +25,68 @@ a {
 .title-presentation {
     margin-bottom: 20px;
 }
+
+
 /*container products(page index)*/
-#container_products {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    margin-top: 40px;
-}
+  #container_products {
+   display: flex;
+flex-wrap: wrap;
+}  
 /* container page produits */
-#container_page_produit{
+/* #container_page_produit{
     display: flex;
     justify-content: center;
-}
-.title-products {
+} */
+/* .title-products {
     text-align: center;
-}
-.product_card {
+} */
+/* .product_card {
     display: flex;
     align-self: center;
-    width: 80vw;
+    width: 85vw;
     height: 100%;
-    background-color:rgba(158, 58, 130, 0.219);
+    color:rgba(158, 58, 130, 0.219);
     box-shadow: 0px 0px 6px 5px rgb(207, 207, 207);
     margin-top: 20px;
     padding: 10px;
-}
-.product_card a {
+} */
+/* .product_card a {
     display: flex;
-}
-.product_info {
+} */
+/* .product_info {
     color: black;
     text-align: center;
     width: 40vw;
-}
-.product_info_lentilles{
+} */
+/* .product_info_lentilles{
     text-align: center;
     width: 100%;
     height: 10vh;
-}
-.product_img img {
-    width: 50vh;
-    height: 50vh;
+} */
+/* .product_img img {
+    width: 30vh;
+    height: 30vh;
     object-fit: cover;
     border-radius: 20px;
-}
+} */
 /* page product */
 .value_products_list{
     text-align: center;
 }
-/* css page card */
+/* css page cart */
 #container_product_panier{
     display: flex;
     justify-content: center;
     align-content: center
 }
+.product_card:hover{
+    background-image: linear-gradient(to right, #B993D6 0%, #8CA6DB  51%, #B993D6  100%);
+    box-shadow: 0 0 20px #eee;
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
 .your_camera{
     background-color:rgba(158, 58, 130, 0.219);
     box-shadow: 0px 0px 6px 5px rgb(207, 207, 207);
@@ -108,15 +110,74 @@ span {
     color: red;
     border: 1px solid rgba(255, 0, 0, 0.527);
   }
+ .title_table{
+     text-align: center;
+ }
+ input{
+     text-align: center;
+ }
+ 
+ .btn_remove {background-image: linear-gradient(to right, #B993D6 0%, #8CA6DB  51%, #B993D6  100%)}
+ .btn_remove {
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+  }
+
+  .btn_remove:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+ 
+ 
+ 
+ 
+    
+#btn_commander {background-image: linear-gradient(to right, #B993D6 0%, #8CA6DB  51%, #B993D6  100%)}
+#btn_commander {
+        margin: 10px;
+        padding: 15px 45px;
+        text-align: center;
+        text-transform: uppercase;
+        transition: 0.5s;
+        background-size: 200% auto;
+        color: white;            
+        box-shadow: 0 0 20px #eee;
+        border-radius: 10px;
+        display: block;
+      }
+
+#btn_commander:hover {
+        background-position: right center; /* change the direction of the change here */
+        color: #fff;
+        text-decoration: none;
+      }
+      .formulaire_container{
+          width: 80vw;
+         display: flex;
+      }
+      .card_form{
+          
+          display: flex;
+        flex-direction: column;
+      }
 
 /*footer*/
-.footer-nav {
+/* .footer-nav {
     background-color: gray;
     padding: 20px;
     box-shadow: 0px 0px 6px 5px rgb(207, 207, 207);
     margin-top: 20px;
-}
-@media screen and (min-width: 601px) and (max-width: 991px) {
+} */
+/* @media screen and (min-width: 601px) and (max-width: 991px) {
     .product_img img {
         width: 20vh;
         height: 20vh;
@@ -138,4 +199,4 @@ span {
         background-color: rgba(245, 245, 245, 0.808);
         border-radius: 20px;
     }
-}
+} */

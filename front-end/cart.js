@@ -2,7 +2,7 @@ let copyOfLocalStorage = JSON.parse(localStorage.getItem("product"));
 console.log(copyOfLocalStorage);
 let panier = [];
 // ------------------------affichage des produits du panier-------------------------------
-const affichageElement = document.querySelector("#container_product_panier");
+const affichageElement = document.querySelector(".products_list");
 // console.log(affichageElement);
 
 // si le panier est vide
@@ -19,44 +19,63 @@ if (copyOfLocalStorage === null) {
   for (j = 0; j < copyOfLocalStorage.length; j++) {
     panier =
       panier +
-      ` <table class="your_camera">
-          <thead>
-            <tr class="title_table">
-              <th class="article_camera_name">Produit</th>
-              <th class="quantity_camera">Quantité</th>
-              <th class="price_camera">Prix</th>
-              <th class="total_price_camera">Total</th>
-            </tr>
-            
-          </thead>
-          <tbody id="products_list">
+      `
+
             <tr class="value_products_list"> 
-              <td class="camera_name text_center">${copyOfLocalStorage[j].name}</td>
-              <td class="quantity_product">${copyOfLocalStorage[j].quantity}</td>
-              <td id="products_price">${copyOfLocalStorage[j].price}</td>
-              <td id="products_total">${copyOfLocalStorage.quantity * copyOfLocalStorage.price}</td>
-              <td><button id="btn_clear_article">Supprimer votre article</button></td>
+              <td class="camera_name">${copyOfLocalStorage[j].name}</td>
+              <td class="quantity_product"><label for="cameraNumber"></label>
+              <input class="cameraNumber" data-id="${j}" type="number" name="cameraNumber" value="${copyOfLocalStorage[j].quantity}" >
+              </td>
+              <td class="products_price_${j}" data-price="${copyOfLocalStorage[j].price}">${copyOfLocalStorage[j].price}</td>
+              <td><button class="btn_remove"  type="button" ><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart-dash" viewBox="0 0 16 16">
+              <path d="M6.5 7a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4z"/>
+              <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+            </svg></button></td>
             </tr>
-          </tbody>
-        </table>
         
       `;
-      
-
   }
   if (j === copyOfLocalStorage.length) {
     affichageElement.innerHTML = panier;
   }
+  // calcul prix article avec la quantité
+  let choixQuantite = document.querySelector(".cameraNumber");
+  // console.log(choixQuantite);
+  choixQuantite.addEventListener("change", function () {
+    console.log(this.value);
+    console.log(this.getAttribute("data-id"));
+    let quantityPrice = document.querySelector(
+      ".products_price_" + this.getAttribute("data-id")
+    );
+    let priceDefault = quantityPrice.getAttribute("data-price");
+    quantityPrice.innerHTML = priceDefault * this.value;
+  });
+}
+// --------------------------------------------------------bouton supprimer article----------------------------------
+
+productInCard = [];
+// sélection de tous les boutons btn_remove
+const btnRemove = document.querySelectorAll(".btn_remove");
+console.log(btnRemove);
+
+for (let p = 0; p < btnRemove.length; p++) {
+  btnRemove[p].addEventListener("click", (e) => {
+    e.preventDefault();
+      let idRemove = copyOfLocalStorage[p].id;
+     for(let l = 0; l < copyOfLocalStorage.length; l++ ){
+       console.log(copyOfLocalStorage[l]);
+       console.log(idRemove);
+       if(copyOfLocalStorage[l].id == idRemove){
+        copyOfLocalStorage.splice(l,1)
+        break;
+       }
+      }
+    localStorage.removeItem("product")
+    localStorage.setItem("product", JSON.stringify(copyOfLocalStorage));
+    location.reload()
+  });
 }
 
-// supprimer un article
-// const buttonRemoveArticle = document.querySelector("#btn_clear_article")
-// console.log(buttonRemoveArticle);
-
-// buttonRemoveArticle.addEventListener("click", (e) => {
-//   deleteItem()
-
-// })
 
 // ----------------------vider entièrement le panier------------------------
 // code HTML à afficher
@@ -88,7 +107,9 @@ let prixTotalCalcul = [];
 
 // recuperer les prix dans le panier
 for (let t = 0; t < copyOfLocalStorage.length; t++) {
-  let prixTotalPanier = copyOfLocalStorage[t].price;
+  // parseInt convertit la chaine de caractère en entier
+  let prixTotalPanier = parseInt(copyOfLocalStorage[t].price);
+
   // mettre les prix du panier dans la variable tableau prixTotalCalcul
   prixTotalCalcul.push(prixTotalPanier);
 }
@@ -97,7 +118,7 @@ for (let t = 0; t < copyOfLocalStorage.length; t++) {
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
 const prixTotal = prixTotalCalcul.reduce(reducer, 0);
 // console.log(prixTotal);
-const prixTotalCard = `<div id="products_total_value">Prix total: ${prixTotal}</div>`;
+const prixTotalCard = `<div id="products_total_value">Total: ${prixTotal}</div>`;
 // affichage HTML
 affichageElement.insertAdjacentHTML("afterend", prixTotalCard);
 
@@ -105,7 +126,7 @@ affichageElement.insertAdjacentHTML("afterend", prixTotalCard);
 const inputs = document.querySelectorAll('input[type="text"]');
 const form = document.querySelector("form");
 
-let firstName, lastName, adress, city, posta, email;
+let firstName, lastName, address, city, zipCode, email;
 // vérification avant envoie du formulaire
 const errorDisplay = (tag, message, valid) => {
   const container = document.querySelector("#" + tag + "_container");
@@ -140,11 +161,11 @@ const lastNameChecker = (value) => {
 };
 const adressChecker = (value) => {
   if (!value.match()) {
-    errorDisplay("adress", "le champ n'est pas valide");
-    adress = null;
+    errorDisplay("address", "le champ n'est pas valide");
+    address = null;
   } else {
-    errorDisplay("adress", "", true);
-    adress = value;
+    errorDisplay("address", "", true);
+    address = value;
   }
 };
 const cityChecker = (value) => {
@@ -168,11 +189,11 @@ const emailChecker = (value) => {
 
 const postalChecker = (value) => {
   if (!value.match(/^[\d]{5}$/)) {
-    errorDisplay("postal", "Le Code postal doit être au format 99999");
-    postal = null;
+    errorDisplay("zipCode", "Le Code postal doit être au format 99999");
+    zipCode = null;
   } else {
-    errorDisplay("postal", "", true);
-    postal = value;
+    errorDisplay("zipCode", "", true);
+    zipCode = value;
   }
 };
 
@@ -185,7 +206,7 @@ inputs.forEach((input) => {
       case "lastName":
         lastNameChecker(e.target.value);
         break;
-      case "adress":
+      case "address":
         adressChecker(e.target.value);
         break;
       case "city":
@@ -194,30 +215,35 @@ inputs.forEach((input) => {
       case "email":
         emailChecker(e.target.value);
         break;
-      case "postal":
+      case "zipCode":
         postalChecker(e.target.value);
         break;
       default:
-        nul;
+        null;
     }
   });
 });
 // si le formulaire est valide
 
-const productsOrder = [];
-productsOrder.push(copyOfLocalStorage);
+let productsOrder = [];
+// productsOrder.push(copyOfLocalStorage);
+copyOfLocalStorage.forEach(function (product) {
+  productsOrder.push(product.id);
+
+  // console.log(product);
+});
 
 form.addEventListener("submit", (e) => {
   //pour éviter que le form change de page automatiquement
   e.preventDefault();
-  if (firstName && lastName && adress && city && postal && email) {
-    const order = {
+  if (firstName && lastName && address && city && zipCode && email) {
+    var order = {
       contact: {
         firstName: firstName,
         lastName: lastName,
-        adress: adress,
+        address: address,
         city: city,
-        postal: postal,
+        zipCode: zipCode,
         email: email,
       },
       products: productsOrder,
@@ -237,6 +263,7 @@ form.addEventListener("submit", (e) => {
   } else {
     alert("Veuillez remplir correctement les champs");
   }
+
   // envoie de la requête
   const promise = fetch("http://localhost:3000/api/cameras/order", {
     method: "POST",
@@ -251,8 +278,16 @@ form.addEventListener("submit", (e) => {
       const contenu = await res.json();
       console.log("contenu");
       console.log(contenu);
+      // récupérer l'id de la response
+      console.log(contenu.orderId);
+      //mettre l'id dans le localStorage
+      localStorage.setItem("responseId", contenu.orderId);
+      localStorage.setItem("prixTotal", JSON.stringify(prixTotal));
+      // changement de page, direction page de confirmation
+      window.location = "order.html";
     } catch (e) {
       console.log(e);
+      alert(`erreur ${e}`);
     }
   });
 });
