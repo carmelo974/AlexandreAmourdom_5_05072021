@@ -2,97 +2,92 @@ let copyOfLocalStorage = JSON.parse(localStorage.getItem("product"));
 console.log(copyOfLocalStorage);
 let panier = [];
 // ------------------------affichage des produits du panier-------------------------------
+
 const affichageElement = document.querySelector(".products_list");
 // console.log(affichageElement);
 
 // si le panier est vide
-
-if (copyOfLocalStorage === null) {
-  const panierVide = `
+function displayCart() {
+  if (copyOfLocalStorage === null) {
+    const panierVide = `
     <div class = "container_panier_vide">
     <div>Votre panier est vide</div>
     </div>`;
-  affichageElement.innerHTML = panierVide;
-} else {
-  // afficher les produits si le panier n'est pas vide
+    affichageElement.innerHTML = panierVide;
+  } else {
+    // afficher les produits si le panier n'est pas vide
 
-  for (j = 0; j < copyOfLocalStorage.length; j++) {
-    panier =
-      panier +
-      `
+    for (j = 0; j < copyOfLocalStorage.length; j++) {
+      panier =
+        panier +
+        `
 
             <tr class="value_products_list"> 
               <td class="camera_name">${copyOfLocalStorage[j].name}</td>
               <td class="quantity_product"><label for="cameraNumber"></label>
-              <input class="cameraNumber" data-id="${j}" type="number" name="cameraNumber" value="${copyOfLocalStorage[j].quantity}" >
+              <input class="cameraNumber" type="number" name="cameraNumber" value="${copyOfLocalStorage[j].quantity}" >
               </td>
-              <td class="products_price_${j}" data-price="${copyOfLocalStorage[j].price}">${copyOfLocalStorage[j].price}</td>
-              <td><button class="btn_remove"  type="button" ><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart-dash" viewBox="0 0 16 16">
+              <td class="products_price_">${copyOfLocalStorage[j].price} €</td>
+              <td><button class="btn_remove btn_style"  type="button" ><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart-dash" viewBox="0 0 16 16">
               <path d="M6.5 7a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4z"/>
               <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
             </svg></button></td>
             </tr>
         
       `;
+    }
+    if (j === copyOfLocalStorage.length) {
+      affichageElement.innerHTML = panier;
+    }
   }
-  if (j === copyOfLocalStorage.length) {
-    affichageElement.innerHTML = panier;
-  }
-  // calcul prix article avec la quantité
-  let choixQuantite = document.querySelector(".cameraNumber");
-  // console.log(choixQuantite);
-  choixQuantite.addEventListener("change", function () {
-    console.log(this.value);
-    console.log(this.getAttribute("data-id"));
-    let quantityPrice = document.querySelector(
-      ".products_price_" + this.getAttribute("data-id")
-    );
-    let priceDefault = quantityPrice.getAttribute("data-price");
-    quantityPrice.innerHTML = priceDefault * this.value;
-  });
 }
+displayCart();
 // --------------------------------------------------------bouton supprimer article----------------------------------
 
-productInCard = [];
+// productInCard = [];
 // sélection de tous les boutons btn_remove
 const btnRemove = document.querySelectorAll(".btn_remove");
 console.log(btnRemove);
 
-for (let p = 0; p < btnRemove.length; p++) {
-  btnRemove[p].addEventListener("click", (e) => {
-    e.preventDefault();
+function removeArticle() {
+  for (let p = 0; p < btnRemove.length; p++) {
+    btnRemove[p].addEventListener("click", (e) => {
+      e.preventDefault();
       let idRemove = copyOfLocalStorage[p].id;
-     for(let l = 0; l < copyOfLocalStorage.length; l++ ){
-       console.log(copyOfLocalStorage[l]);
-       console.log(idRemove);
-       if(copyOfLocalStorage[l].id == idRemove){
-        copyOfLocalStorage.splice(l,1)
-        break;
-       }
+      for (let l = 0; l < copyOfLocalStorage.length; l++) {
+        console.log(copyOfLocalStorage[l]);
+        console.log(idRemove);
+        if (copyOfLocalStorage[l].id == idRemove) {
+          copyOfLocalStorage.splice(l, 1);
+          break;
+        }
       }
-    localStorage.removeItem("product")
-    localStorage.setItem("product", JSON.stringify(copyOfLocalStorage));
-    location.reload()
-  });
+      localStorage.removeItem("product");
+      localStorage.setItem("product", JSON.stringify(copyOfLocalStorage));
+      location.reload();
+    });
+  }
 }
-
-
+removeArticle();
 // ----------------------vider entièrement le panier------------------------
 // code HTML à afficher
-const btnClearCard = `  <button id="btn_clear_card">Supprimer votre panier</button>`;
+const btnClearCard = ` <button id="btn_clear_card" class="btn_clear btn_style" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart-x-fill" viewBox="0 0 16 16">
+<path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM7.354 5.646 8.5 6.793l1.146-1.147a.5.5 0 0 1 .708.708L9.207 7.5l1.147 1.146a.5.5 0 0 1-.708.708L8.5 8.207 7.354 9.354a.5.5 0 1 1-.708-.708L7.793 7.5 6.646 6.354a.5.5 0 1 1 .708-.708z"/>
+</svg></button>`;
+// const displayBtnClear = document.querySelector("#container_product_panier");
 
 // insertion bouton dans le html, befeoreend = Juste à l'intérieur de l'element , après son dernier enfant.
 affichageElement.insertAdjacentHTML("beforeend", btnClearCard);
 
 const buttonEmptyCard = document.querySelector("#btn_clear_card");
-// console.log(buttonEmptyCard);
+
 // supression local Storage
 buttonEmptyCard.addEventListener("click", (e) => {
   e.preventDefault();
   if (copyOfLocalStorage) {
     // removeItem pour vider le localStorage
     localStorage.removeItem("product");
-    alert["Le panier a été vidé"];
+    alert("Le panier a été vidé");
     //rechargement de la page panier
     window.location.href = "cart.html";
   } else {
@@ -101,28 +96,42 @@ buttonEmptyCard.addEventListener("click", (e) => {
   }
 });
 
+let elementForm = document.getElementById("formulaire_container");
+
+function removeForm() {
+  elementForm.remove();
+}
+
+buttonEmptyCard.addEventListener("click", (e) => {
+  removeForm();
+});
+
 // --------------------montant total panier--------------------
-// variable pour le prix total
+
+// variable pour le prix
 let prixTotalCalcul = [];
 
 // recuperer les prix dans le panier
-for (let t = 0; t < copyOfLocalStorage.length; t++) {
-  // parseInt convertit la chaine de caractère en entier
-  let prixTotalPanier = parseInt(copyOfLocalStorage[t].price);
+function recupPrice() {
+  for (let t = 0; t < copyOfLocalStorage.length; t++) {
+    // parseInt convertit la chaine de caractère en entier
+    let prixTotalPanier = parseInt(copyOfLocalStorage[t].price);
 
-  // mettre les prix du panier dans la variable tableau prixTotalCalcul
-  prixTotalCalcul.push(prixTotalPanier);
+    // mettre les prix du panier dans la variable tableau prixTotalCalcul
+    prixTotalCalcul.push(prixTotalPanier);
+  }
 }
-
+recupPrice();
 // additionner les prix du tableau "prixTotalCalcul" avec la méthode.reduce
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
 const prixTotal = prixTotalCalcul.reduce(reducer, 0);
 // console.log(prixTotal);
-const prixTotalCard = `<div id="products_total_value">Total: ${prixTotal}</div>`;
+const prixTotalCard = `<div id="products_total_value">Total: ${prixTotal} €</div>`;
 // affichage HTML
 affichageElement.insertAdjacentHTML("afterend", prixTotalCard);
 
 // ----------------------------------formulaire de commande----------------------------
+
 const inputs = document.querySelectorAll('input[type="text"]');
 const form = document.querySelector("form");
 
@@ -223,6 +232,7 @@ inputs.forEach((input) => {
     }
   });
 });
+
 // si le formulaire est valide
 
 let productsOrder = [];
@@ -280,7 +290,7 @@ form.addEventListener("submit", (e) => {
       console.log(contenu);
       // récupérer l'id de la response
       console.log(contenu.orderId);
-      //mettre l'id dans le localStorage
+      //mettre l'id et le prix dans le localStorage
       localStorage.setItem("responseId", contenu.orderId);
       localStorage.setItem("prixTotal", JSON.stringify(prixTotal));
       // changement de page, direction page de confirmation

@@ -1,8 +1,9 @@
+// Fonction lancer au chargement de la page
 main();
 
 async function main() {
   const articles = await getArticles();
-
+console.log(articles);
   for (article of articles) {
     displayArticle(article);
   }
@@ -23,20 +24,18 @@ function getArticles() {
       alert(error);
     });
 }
-// afficher les articles sur la page 
+//afficher les articles sur la page
 function displayArticle(article) {
   const templateElt = document.getElementById("templateArticle");
   const cloneElt = document.importNode(templateElt.content, true);
 
-  cloneElt.getElementById("link").href +=`?id=${article._id}` 
+  cloneElt.getElementById("link").href += `?id=${article._id}`;
   cloneElt.getElementById("product_img").src = article.imageUrl;
   cloneElt.getElementById("product_name").textContent = article.name;
   cloneElt.getElementById("product_decription").textContent =
     article.description;
   cloneElt.getElementById("product_price").textContent =
     article.price / 100 + "€";
-  // cloneElt.getElementById("lenses_select").value = article.lenses;
 
   document.getElementById("container_products").appendChild(cloneElt);
 }
-

@@ -11,6 +11,7 @@ const orderConfirmation = `
                 <div class="confirm">
                 <p>Votre commande: ${responseId} a bien été prise en compte</p>
                 <p>Le montant total est de ${prixTotal} €</p>
+                <p> Orinoco vous remercie d'avoir passé commande &#128521;</p>
                 </div>
 `;
 displayOrder.insertAdjacentHTML("afterbegin", orderConfirmation);

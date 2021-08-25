@@ -12,14 +12,13 @@
 </head>
 <body>
     <header>
-        <div class="bg-secondary">
+        <div class="bg-dark">
             <div class="container">
                 <div class="row">
-                    <nav class="col navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="index.html">
-                            ORINOCO
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation>
-                        <span class="navarbar-toggler-icon"></span>
+                     <nav class="col navbar navbar-expand-lg navbar-dark"> 
+                        <a class="navbar-brand" href="index.html"><h1>ORINOCO</h1>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
                         </button>
                         <div id="navbarContent" class="collapse navbar-collapse">
                             <ul class="navbar-nav">
@@ -49,7 +48,7 @@
         </div>
         <!--container_product_panier-->
         <div id="container_product_panier">
-            <table class="table your_camera">
+            <table class="form table your_camera">
                 <thead>
                   <tr class="title_table">
                     <th class="article_camera_name">Produit</th>
@@ -66,9 +65,9 @@
         </div>
       
         <!--container formulaire-->
-        <div class="formulaire_container" >
-            <div class="card_form justify-content-center">
-                <h2 class="text-center">Passer commande</h2>
+        <div id="formulaire_container" >
+            <div class="card_form">
+                <!-- <h2 class="text-center">Passer commande</h2> -->
                 <form class="row">
                     <div class="col-md-6 name_and_lastname">
                         <div class=" form-label cart-card-form" id="firstName_container">
@@ -115,7 +114,7 @@
                 </div>
                    <div class="erreur"></div>
                    <div class="cart-card-form">
-                       <button id="btn_commander" type="submit">Commander</button>
+                       <button id="btn_commander" type="submit">Valider ma commande</button>
                    </div>
                 </form>
                 
