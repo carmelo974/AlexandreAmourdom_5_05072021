@@ -25,7 +25,7 @@ function displayCart() {
             <tr class="value_products_list"> 
               <td class="camera_name">${copyOfLocalStorage[j].name}</td>
               <td class="quantity_product"><label for="cameraNumber"></label>
-              <input class="cameraNumber" type="number" name="cameraNumber" value="${copyOfLocalStorage[j].quantity}" >
+              <input class="col-4 cameraNumber" type="number" name="cameraNumber" value="${copyOfLocalStorage[j].quantity}" >
               </td>
               <td class="products_price_">${copyOfLocalStorage[j].price} €</td>
               <td><button class="btn_remove btn_style"  type="button" ><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart-dash" viewBox="0 0 16 16">

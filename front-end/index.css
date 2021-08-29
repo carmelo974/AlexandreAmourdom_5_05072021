@@ -56,7 +56,8 @@ flex-wrap: wrap;
 .your_camera{
     background-color:rgba(158, 58, 130, 0.219);
     box-shadow: 0px 0px 6px 5px rgb(207, 207, 207);
-    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
 }
 span {
     margin-bottom: 20px;
@@ -128,10 +129,9 @@ span {
         text-decoration: none;
       }
       #formulaire_container{
-          width: 80vw;
-         
-         margin-left: auto;
-  margin-right: auto;
+        width: 80vw;
+        margin-left: auto;
+        margin-right: auto;
       }
       
 

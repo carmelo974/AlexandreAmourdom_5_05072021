@@ -9,7 +9,7 @@
     <script src="https://kit.fontawesome.com/cb98e9792d.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Merienda&display=swap" rel="stylesheet"> 
-    <title>Orinoco Produits</title>
+    <title>Orinoco Produit</title>
 </head>
 <body>
     <!--header with nav bar-->
@@ -18,8 +18,8 @@
             <div class="container">
                 <div class="row">
                      <nav class="col navbar navbar-expand-lg navbar-dark"> 
-                        <a class="navbar-brand" href="index.html"><h1>ORINOCO</h1>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <h1>ORINOCO</h1>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                         </button>
                         <div id="navbarContent" class="collapse navbar-collapse">
@@ -28,12 +28,14 @@
                                     <a href="index.html" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
                                         <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"/>
                                         <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
-                                      </svg></a>
+                                        </svg>
+                                    </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="cart.html" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
                                         <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                                      </svg></a>
+                                      </svg>
+                                    </a>
                                 </li>
                              </ul>
                         </div>
@@ -44,51 +46,49 @@
     </header>
     <main id="main">
          <!--container presentation-->
-        <div class="orinocam-presentation">
-             <h2 class="title-presentation">ORINOCO appareil photo vintage </h2>
-        </div>
+        <div class="orinocam-presentation"><h2 class="title-presentation">ORINOCO appareil photo vintage </h2></div>
         <!--container-page-produit-->
-        <div class="container" id="container_page_produit">
-            <div class="row mb-5 justify-content-center">
-                <div class="col-12 col-lg-4">
-                    <div id="product_card" class= "product_card">
-                        <div class="card">
-                        <img id="product_img" class="card-img-top" src="" alt=""></div>
-                    
-                    <div class="card-body text-center">
-                            <div class="product_info">
-                                <h2 id= product_name class="product_name title-card"></h2>
-                                <p id=product_decription class="product_description card-text"></p>
-                                <div id=product_price class="product_price card-text"></div>
-                                <div id="product_quantity">
-                                    <label for="cameraNumber">Quantité</label>
-                                    <input id="cameraNumber" type="number" name="cameraNumber" value="1" min="1">
+            <div class="container" id="container_page_produit">
+                <div class="row mb-5 justify-content-center">
+                    <div class="col-12 col-lg-4">
+                        <div id="product_card" class= "product_card">
+                                <div class="card">
+                                <img id="product_img" class="card-img-top" src=""  alt="appareil photo">
                                 </div>
-                                <div class="product_info_lentilles">
-                                    <div class="lenses">
-                                        <form>
-                                            <label for="lenses_select">Lentilles</label>
-                                                <select name="lenses" id="lenses_select" class="lenses_select">
-                                                
-                                                </select>
-                                        </form>
-                                    </div>        
+                            <div class="card-body text-center">
+                                <div class="product_info">
+                                    <h2 id="product_name" class="product_name title-card"></h2>
+                                    <p id="product_decription" class="product_description card-text"></p>
+                                    <div id="product_price" class="product_price card-text"></div>
+                                    <div id="product_quantity">
+                                        <label for="cameraNumber">Quantité</label>
+                                        <input id="cameraNumber" type="number" name="cameraNumber" value="1" min="1">
+                                    </div>
+                                    <div class="product_info_lentilles">
+                                        <div class="lenses">
+                                            <form>
+                                                <label for="lenses_select">Lentilles</label>
+                                                    <select name="lenses" id="lenses_select" class="lenses_select">
+                                                        
+                                                    </select>
+                                            </form>
+                                        </div>        
+                                    </div>
+                                </div>
+                                <div class="btn_page_product"> 
+                                        <button class="btn btn-outline-dark mb-5" id="btn_ajouter"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+                                            <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+                                            <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                        </svg></button>
+                                        <!-- <a href="cart.html"><button class="btn btn-outline-success" id="btn_panier" type="submit" name="btn_panier">Votre panier</button></a> -->
                                 </div>
                             </div>
-                        
-                            <div class="btn_page_product"> 
-                                <button class="btn btn-outline-dark mb-5" id="btn_ajouter"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
-                                    <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
-                                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                                  </svg></button>
-                                <!-- <a href="cart.html"><button class="btn btn-outline-success" id="btn_panier" type="submit" name="btn_panier">Votre panier</button></a> -->
-                            </div>
-                        
-                    
+                        </div>
+                   </div>
                 </div>
-            </div>
-        </div>    
+            </div>           
     </main>
+
     <div class="bg-dark">
         <div class="container">
             <div class="row">
