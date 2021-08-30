@@ -1,6 +1,6 @@
 let copyOfLocalStorage = JSON.parse(localStorage.getItem("product"));
 console.log(copyOfLocalStorage);
-let panier = [];
+
 // ------------------------affichage des produits du panier-------------------------------
 
 const affichageElement = document.querySelector(".products_list");
@@ -16,7 +16,7 @@ function displayCart() {
     affichageElement.innerHTML = panierVide;
   } else {
     // afficher les produits si le panier n'est pas vide
-
+    let panier = [];
     for (j = 0; j < copyOfLocalStorage.length; j++) {
       panier =
         panier +
